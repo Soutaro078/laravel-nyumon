@@ -1,5 +1,10 @@
 <html>
 <body>
-Hello, {{ $name }}!
+@foreach ($diaries as $diary)
+<div>
+    <div>{{ $diary->date }}</div>
+    <div>{{ $diary->title }}</div>
+</div>
+@endforeach
 </body>
 </html>
