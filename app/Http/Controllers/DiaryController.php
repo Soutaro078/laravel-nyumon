@@ -50,4 +50,12 @@ class DiaryController extends Controller
         return back()->with('message', '保存しました');
       }
 
+    public function find($id) {
+        // findメソッドでidを取得
+        $diary = Diary::find($id);
+        // viewにデータを渡す
+        return view('diary.find', compact('diary'));
+    }
+
+
 }
