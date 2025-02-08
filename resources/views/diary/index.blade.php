@@ -1,5 +1,5 @@
 <html>
 <body>
-Hello!
+Hello, {{ $name }}!
 </body>
 </html>

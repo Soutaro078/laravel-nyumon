@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PracticeController extends Controller
+class DiaryController extends Controller
 {
     //メソッドの追加
     public function index() {
-        return "Station6";
+        $name = 'Laravel';
+        return view('diary.index', compact('name'));
     }
 }
