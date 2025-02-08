@@ -26,3 +26,8 @@ Route::post('/diary', [DiaryController::class, 'save'])->name('diary.save');
 //個別ページへのルーティング設定
 // Route::get('students/{id}', [DiaryController::class, 'find'])->name('diary.find');
 Route::get('/diary/{id}', [DiaryController::class, 'find'])->name('diary.find');
+
+// 編集画面を表示
+Route::get('/diary/{id}/edit', [DiaryController::class, 'edit'])->name('diary.edit');
+// 更新を実行
+Route::patch('/diary/{id}', [DiaryController::class, 'update'])->name('diary.update');

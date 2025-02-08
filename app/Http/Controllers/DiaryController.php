@@ -50,12 +50,43 @@ class DiaryController extends Controller
         return back()->with('message', '保存しました');
       }
 
+    //特定のIDを見つけるメソッド
     public function find($id) {
-        // findメソッドでidを取得
         $diary = Diary::find($id);
-        // viewにデータを渡す
+        if (!$diary) {
+            abort(404, 'Diary not found');
+        }
         return view('diary.find', compact('diary'));
     }
+
+    // 編集を実行する関数
+    public function edit($id) {
+        $diary = Diary::find($id);
+        if (!$diary) {
+            abort(404, 'Diary not found');
+        }
+        return view('diary.update', compact('diary'));
+    }
+
+    //更新処理を実行する関数
+    public function update(Request $request, $id) {
+        // 更新対象となるデータを取得する
+        $diary = Diary::find($id);
+
+        // 入力値チェックを行う
+        // タイトルは20文字以内、本文は400文字以内という制限を設ける
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+
+        // チェック済みの値を使用して更新処理を行う
+        $diary->update($validated);
+
+        // 更新後、日記詳細ページにリダイレクトし、成功メッセージを表示
+        return back()->with('message', '更新しました');
+    }
+      
 
 
 }

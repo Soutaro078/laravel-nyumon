@@ -9,4 +9,9 @@ class Diary extends Model
 {
     use HasFactory;
     //
+    protected $fillable = [
+        'title',
+        'body',
+        'date',
+    ];
 }
