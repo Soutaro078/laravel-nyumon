@@ -7,7 +7,12 @@
 </div>
 <!-- 内容と日付を表示する -->
 <div>
-  <div>{{ $diary->body }}</div>
   <div>{{ $diary->date }}</div>
+  <div>{{ $diary->body }}</div>
 </div>
 
+<form method="post" action="{{ route('diary.destroy', $diary->id) }}">
+  @csrf
+  @method('delete')
+  <button>削除</button>
+</form>
